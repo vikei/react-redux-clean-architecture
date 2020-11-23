@@ -1,16 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./main/app";
+import {render} from "react-dom";
+import AppView from "./main/elements/views/app.view";
 import * as serviceWorker from "./main/service-worker";
+import createStore from "./main/store/create-store";
+import worker from "./server/worker";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root"),
-);
+async function init() {
+  await worker.start();
+  render(<AppView store={createStore()} />, document.getElementById("root"));
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+init()
+  .then(() => console.info("App is running..."))
+  .catch(e => console.error("Failure to boot app:", e));
+
 serviceWorker.unregister();
