@@ -37,7 +37,7 @@ const categoriesHandlers = [
       data = data.filter(({name}) => name.includes(query));
     }
 
-    return res(ctx.json({data}));
+    return res(ctx.delay(3000), ctx.json({data}));
   }),
   rest.get("http://blog.com/categories/:id", async (req, res, ctx) => {
     const categories = (await storage.getItem<CategoryEntity[]>("categories")) ?? [];

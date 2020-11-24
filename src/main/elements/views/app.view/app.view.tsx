@@ -2,6 +2,7 @@ import React from "react";
 import {Provider} from "react-redux";
 import {Store} from "redux";
 import GlobalStyles from "../../../../library/elements/components/global-styles";
+import {MessagesProvider} from "../../../../library/elements/hooks/use-messages";
 import AppRouter from "../../routes/app.router";
 
 interface AppViewProps {
@@ -12,7 +13,9 @@ function AppView({store}: AppViewProps) {
   return (
     <Provider store={store}>
       <GlobalStyles />
-      <AppRouter />
+      <MessagesProvider>
+        <AppRouter />
+      </MessagesProvider>
     </Provider>
   );
 }

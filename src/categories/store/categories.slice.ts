@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import CategoryEntity from "../domain/entities/category.entity";
 
 interface CategoriesState {
-  byId: {[id: number]: CategoryEntity};
+  byId: {[id: number]: CategoryEntity | undefined};
   allIds: number[];
   displayIds: number[];
 }
@@ -10,7 +10,6 @@ interface CategoriesState {
 const initialState: CategoriesState = {byId: {}, allIds: [], displayIds: []};
 
 // TODO: move to library helpers
-// TODO: add loading state
 const categoriesSlice = createSlice({
   name: "categories",
   initialState,

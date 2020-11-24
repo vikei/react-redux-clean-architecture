@@ -1,27 +1,13 @@
-import {Button, Typography} from "antd";
-import React, {useCallback} from "react";
-import {useHistory} from "react-router-dom";
+import {Typography} from "antd";
+import React from "react";
+import BackButton from "../../../../library/elements/components/back-button";
 import Content from "../../../../library/elements/components/content";
 import Header from "../../../../library/elements/components/header";
-import useMainDispatch from "../../../../main/store/use-main-dispatch";
-import CategoryDto from "../../../domain/dtos/category-dto";
-import createCategoryThunk from "../../../store/thunks/create-category.thunk";
 import CategoryForm from "../../components/category-form";
+import useSubmit from "./hooks/use-submit";
 
 export default function CreateCategoryView() {
-  const history = useHistory();
-  const dispatch = useMainDispatch();
-  const handleSubmit = useCallback(
-    async (values: CategoryDto) => {
-      await dispatch(createCategoryThunk(values));
-      history.push("/categories");
-    },
-    [dispatch, history],
-  );
-
-  const handleBack = useCallback(() => {
-    history.goBack();
-  }, [history]);
+  const {submit} = useSubmit();
 
   return (
     <section>
@@ -29,10 +15,8 @@ export default function CreateCategoryView() {
         <Typography.Title level={1}>Category Form</Typography.Title>
       </Header>
       <Content>
-        <CategoryForm onSubmit={handleSubmit} />
-        <Button type="link" onClick={handleBack}>
-          Back
-        </Button>
+        <CategoryForm onSubmit={submit} />
+        <BackButton />
       </Content>
     </section>
   );

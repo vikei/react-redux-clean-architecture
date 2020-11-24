@@ -10,13 +10,15 @@ import CategoryEntity from "../../../domain/entities/category.entity";
 interface CategoriesListProps {
   data: CategoryEntity[];
   onDelete: (id: number) => void;
+  loading?: boolean;
 }
 
-export default function CategoriesList({data, onDelete}: CategoriesListProps) {
+export default function CategoriesList({data, loading, onDelete}: CategoriesListProps) {
   return (
     <List
-      size="large"
       bordered
+      size="large"
+      loading={loading}
       dataSource={data}
       renderItem={item => (
         <List.Item style={{display: "flex", justifyContent: "space-between"}}>
