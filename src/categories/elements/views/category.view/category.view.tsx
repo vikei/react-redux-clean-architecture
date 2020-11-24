@@ -1,6 +1,8 @@
 import {useMount} from "ahooks";
+import {Typography} from "antd";
 import React from "react";
 import {useParams} from "react-router-dom";
+import Header from "../../../../library/elements/components/header";
 import useMainDispatch from "../../../../main/store/use-main-dispatch";
 import useMainSelector from "../../../../main/store/use-main-selector";
 import getCategoryByIdSelector from "../../../store/selectors/get-category-by-id.selector";
@@ -17,7 +19,9 @@ export default function CategoryView() {
 
   return (
     <section>
-      <h1>Category {data?.name ?? ""}</h1>
+      <Header>
+        <Typography.Title level={1}>Category {data?.name ?? ""}</Typography.Title>
+      </Header>
     </section>
   );
 }

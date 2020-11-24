@@ -24,7 +24,6 @@ export default function CategoryForm({onSubmit, initialValues}: CategoryFormProp
       >
         <Input />
       </Form.Item>
-
       <Form.Item>
         <Button type="primary" htmlType="submit">
           Submit

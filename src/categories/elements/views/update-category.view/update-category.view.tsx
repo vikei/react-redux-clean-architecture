@@ -1,7 +1,9 @@
 import {useMount} from "ahooks";
-import {Button} from "antd";
+import {Button, Typography} from "antd";
 import React, {useCallback} from "react";
 import {useHistory, useParams} from "react-router-dom";
+import Content from "../../../../library/elements/components/content";
+import Header from "../../../../library/elements/components/header";
 import useMainDispatch from "../../../../main/store/use-main-dispatch";
 import useMainSelector from "../../../../main/store/use-main-selector";
 import CategoryDto from "../../../domain/dtos/category-dto";
@@ -34,11 +36,15 @@ export default function UpdateCategoryView() {
 
   return (
     <section>
-      <h1>Update Category</h1>
-      {data && <CategoryForm initialValues={data} onSubmit={handleSubmit} />}
-      <Button type="link" onClick={handleBack}>
-        Back
-      </Button>
+      <Header>
+        <Typography.Title level={1}>Category From: Update #{id}</Typography.Title>
+      </Header>
+      <Content>
+        {data && <CategoryForm initialValues={data} onSubmit={handleSubmit} />}
+        <Button type="link" onClick={handleBack}>
+          Back
+        </Button>
+      </Content>
     </section>
   );
 }

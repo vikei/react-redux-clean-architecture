@@ -1,6 +1,8 @@
-import {Button} from "antd";
+import {Button, Typography} from "antd";
 import React, {useCallback} from "react";
 import {useHistory} from "react-router-dom";
+import Content from "../../../../library/elements/components/content";
+import Header from "../../../../library/elements/components/header";
 import useMainDispatch from "../../../../main/store/use-main-dispatch";
 import CategoryDto from "../../../domain/dtos/category-dto";
 import createCategoryThunk from "../../../store/thunks/create-category.thunk";
@@ -23,11 +25,15 @@ export default function CreateCategoryView() {
 
   return (
     <section>
-      <h1>Create Category</h1>
-      <CategoryForm onSubmit={handleSubmit} />
-      <Button type="link" onClick={handleBack}>
-        Back
-      </Button>
+      <Header>
+        <Typography.Title level={1}>Category Form</Typography.Title>
+      </Header>
+      <Content>
+        <CategoryForm onSubmit={handleSubmit} />
+        <Button type="link" onClick={handleBack}>
+          Back
+        </Button>
+      </Content>
     </section>
   );
 }
