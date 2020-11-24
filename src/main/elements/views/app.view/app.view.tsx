@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Store} from "redux";
 import ArticlesRouter from "../../../../articles/elements/articles.router";
 import CategoriesRouter from "../../../../categories/elements/categories.router";
-import GlobalStyles from "../../../../library/global-styles";
+import GlobalStyles from "../../../../library/elements/components/global-styles";
 
 interface AppViewProps {
   store: Store<MainState>; // TODO add action type
