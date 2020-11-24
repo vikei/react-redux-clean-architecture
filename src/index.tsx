@@ -1,7 +1,7 @@
 import React from "react";
 import {render} from "react-dom";
 import AppView from "./main/elements/views/app.view";
-import * as serviceWorker from "./main/service-worker";
+import * as serviceWorker from "./main/utils/service-worker";
 import createStore from "./main/store/create-store";
 import worker from "./server/worker";
 

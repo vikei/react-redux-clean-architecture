@@ -1,9 +1,9 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import CategoriesView from "./views/categories.view";
-import CategoryView from "./views/category.view";
-import CreateCategoryView from "./views/create-category.view";
-import UpdateCategoryView from "./views/update-category.view";
+import CategoriesView from "../views/categories.view";
+import CategoryView from "../views/category.view";
+import CreateCategoryView from "../views/create-category.view";
+import UpdateCategoryView from "../views/update-category.view";
 
 export default function CategoriesRouter() {
   return (
