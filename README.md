@@ -1,11 +1,5 @@
 # What is it and why it is important?
 
-https://s1.imghub.io/sPKyJ.png
-https://s1.imghub.io/sP1G1.png
-https://s1.imghub.io/sPjaH.png
-https://s1.imghub.io/sPr7k.png
-https://s1.imghub.io/sP4Zy.png
-
 **First of all what is architecture?**
 Architecture means the linking of components in system, organizing code units in groups with related purpose. 
 
