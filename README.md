@@ -1,3 +1,70 @@
+# Structure
+```bash
+src
+├── api                # Infrastructure - API calls
+│   └── categories
+├── application        # Domain - Business object and use cases
+│   └── categories
+├── index.tsx
+├── react-app-env.d.ts
+├── server             # Infrastructure - Frontend server to intercept https calls
+│   ├── handlers
+│   └── worker.ts
+├── setupTests.ts
+├── store              # Infrastructure - Storage logic specific to storage of application
+│   ├── categories
+│   ├── categories.slice.ts
+│   ├── selectors      # Selectors - How we can find data in storage
+│   │   ├── get-all-ids-categories.selector.ts
+│   │   ├── get-categories.selector.ts
+│   │   ├── get-category-by-id.selector.ts
+│   │   └── get-display-categories.selector.ts
+│   ├── thunks         # Adapters - Logic that links domain and infrastructure
+│   │   ├── create-category.thunk.ts
+│   │   ├── delete-category-by-id.thunk.ts
+│   │   ├── get-categories.thunk.ts
+│   │   ├── get-category-by-id.thunk.ts
+│   │   └── update-category-by-id.thunk.ts
+│   ├── library
+│   └── loading
+└── web                # UI Infrastructure
+    ├── articles
+    ├── categories     # Categories UI Module
+    │   ├── components # Shared Categories Components
+    │   ├── categories-list
+    │   └── category-form
+    ├── hooks          # Services for interact with Infrastructure Layers
+    │   ├── use-categories.ts
+    │   ├── use-category.ts
+    │   ├── use-create-category.ts
+    │   ├── use-delete-category.ts
+    │   ├── use-search-categories.ts
+    │   └── use-udpate-category.ts
+    ├── routes         # Routes
+    │   └── categories.router.tsx
+    ├── views          # Views that used in Routes
+    │   ├── categories.view
+    │   ├── category.view
+    │   ├── create-category.view
+    │   └── update-category.view
+    ├── library        # Shared UI Module
+    │   ├── components # Shared Components
+    │   ├── back-button
+    │   ├── content
+    │   ├── global-styles
+    │   ├── header
+    │   └── list-actions
+    ├── hooks         # Shared Services
+    │   ├── use-loading.ts
+    │   ├── use-main-dispatch.ts
+    │   ├── use-main-selector.ts
+    │   ├── use-messages.tsx
+    │   └── use-required-context.ts
+    ├── utils
+    │   └── service-worker.ts
+    └── main
+```
+
 # What is it and why it is important?
 
 **First of all what is architecture?**
