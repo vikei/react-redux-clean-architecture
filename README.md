@@ -15,10 +15,9 @@ src
 │   ├── categories
 │   ├── categories.slice.ts
 │   ├── selectors      # Selectors - How we can find data in storage
-│   │   ├── get-all-ids-categories.selector.ts
+│   │   ├── get-categories.selector.ts
 │   │   ├── get-categories.selector.ts
 │   │   ├── get-category-by-id.selector.ts
-│   │   └── get-display-categories.selector.ts
 │   ├── thunks         # Adapters - Logic that links domain and infrastructure
 │   │   ├── create-category.thunk.ts
 │   │   ├── delete-category-by-id.thunk.ts

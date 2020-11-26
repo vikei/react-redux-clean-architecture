@@ -12,7 +12,7 @@ const updateCategoryByIdThunk = createAsyncThunk<
   const {
     data: {data},
   } = await updateCategoryById(id, values);
-  dispatch(updateCategory(data));
+  dispatch(updateCategory({id: data.id, changes: data}));
   return data;
 });
 

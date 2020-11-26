@@ -1,44 +1,16 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 import CategoryEntity from "../../application/categories/entities/category.entity";
 
-interface CategoriesState {
-  byId: {[id: number]: CategoryEntity | undefined};
-  allIds: number[];
-  displayIds: number[];
-}
+export const categoriesAdapter = createEntityAdapter<CategoryEntity>();
 
-const initialState: CategoriesState = {byId: {}, allIds: [], displayIds: []};
-
-// TODO: move to library helpers
 const categoriesSlice = createSlice({
   name: "categories",
-  initialState,
+  initialState: categoriesAdapter.getInitialState(),
   reducers: {
-    setCategories: (_, action: PayloadAction<CategoryEntity[]>) => ({
-      byId: action.payload.reduce((all, item) => ({...all, [item.id]: item}), {}),
-      allIds: action.payload.map(({id}) => id), // TODO: remove duplication
-      displayIds: action.payload.map(({id}) => id),
-    }),
-    addCategories: ({byId, allIds}, action: PayloadAction<CategoryEntity[]>) => ({
-      byId: {...byId, ...action.payload.reduce((all, item) => ({...all, [item.id]: item}), {})},
-      allIds: [...allIds, ...action.payload.map(({id}) => id)], // TODO: remove duplication
-      displayIds: action.payload.map(({id}) => id),
-    }),
-    updateCategory: ({byId, allIds, ...rest}, action: PayloadAction<CategoryEntity>) => ({
-      ...rest,
-      byId: {...byId, [action.payload.id]: action.payload},
-      allIds: [...allIds, action.payload.id],
-    }),
-    deleteCategory: ({byId, allIds, displayIds}, action: PayloadAction<CategoryEntity>) => {
-      const newById = {...byId};
-      delete newById[action.payload.id];
-
-      return {
-        byId: newById,
-        allIds: allIds.filter(id => id !== action.payload.id),
-        displayIds: displayIds.filter(id => id !== action.payload.id),
-      };
-    },
+    setCategories: categoriesAdapter.setAll,
+    addCategories: categoriesAdapter.addMany,
+    updateCategory: categoriesAdapter.updateOne,
+    deleteCategory: categoriesAdapter.removeOne,
   },
 });
 

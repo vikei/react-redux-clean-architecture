@@ -11,7 +11,7 @@ const deleteCategoryByIdThunk = createAsyncThunk<CategoryEntity | null, number, 
     } = await deleteCategoryById(id);
 
     if (data) {
-      dispatch(deleteCategory(data));
+      dispatch(deleteCategory(data.id));
     }
 
     return data ?? null;

@@ -3,11 +3,12 @@ import fetchCategoryById from "../../../api/categories/fetch-category-by-id";
 import CategoryEntity from "../../../application/categories/entities/category.entity";
 import {setLoading} from "../../loading/loading.slice";
 import {addCategories} from "../categories.slice";
+import getCategoryByIdSelector from "../selectors/get-category-by-id.selector";
 
 const getCategoryByIdThunk = createAsyncThunk<CategoryEntity | undefined, number, ThunkApiConfig>(
   "@@categories/getCategoryById",
   async (id, {dispatch, getState}) => {
-    const existed = getState().categories.byId[id];
+    const existed = getCategoryByIdSelector(id)(getState());
     if (existed) {
       return existed;
     }

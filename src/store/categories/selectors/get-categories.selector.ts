@@ -1,3 +1,5 @@
+import {categoriesAdapter} from "../categories.slice";
+
 export default function getCategoriesSelector(state: MainState) {
-  return state.categories.allIds.map(id => state.categories.byId[id]);
+  return categoriesAdapter.getSelectors().selectAll(state.categories);
 }
