@@ -3,7 +3,7 @@ import {render} from "react-dom";
 import createStore from "./store/library/create-store";
 import * as serviceWorker from "./web/library/utils/service-worker";
 import worker from "./server/worker";
-import AppView from "./web/main/components/views/app.view";
+import AppView from "./web/main/views/app.view";
 
 async function init() {
   await worker.start();

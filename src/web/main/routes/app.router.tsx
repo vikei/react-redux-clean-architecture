@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import ArticlesRouter from "../../../articles/articles.router";
-import CategoriesRouter from "../../../categories/routes/categories.router";
+import ArticlesRouter from "../../articles/articles.router";
+import CategoriesRouter from "../../categories/routes/categories.router";
 
 export default function AppRouter() {
   return (
