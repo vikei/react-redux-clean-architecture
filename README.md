@@ -33,7 +33,7 @@ src
     │   ├── components # Shared Categories Components
     │   ├── categories-list
     │   └── category-form
-    ├── hooks          # Services for interact with Infrastructure Layers
+    ├── hooks          # Services handle ui logic
     │   ├── use-categories.ts
     │   ├── use-category.ts
     │   ├── use-create-category.ts
