@@ -1,9 +1,9 @@
 import React from "react";
 import {render} from "react-dom";
-import AppView from "./main/elements/views/app.view";
-import * as serviceWorker from "./main/utils/service-worker";
-import createStore from "./main/store/create-store";
+import createStore from "./store/library/create-store";
+import * as serviceWorker from "./web/library/utils/service-worker";
 import worker from "./server/worker";
+import AppView from "./web/main/components/views/app.view";
 
 async function init() {
   await worker.start();
