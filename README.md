@@ -60,7 +60,7 @@ src
     │   │   ├── use-main-selector.ts
     │   │   ├── use-messages.tsx
     │   │   └── use-required-context.ts
-    │   ├── utils
+    │   └── utils
     │       └── service-worker.ts
     └── main
 ```
