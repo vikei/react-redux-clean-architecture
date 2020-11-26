@@ -48,20 +48,20 @@ src
     │   ├── create-category.view
     │   └── update-category.view
     ├── library        # Shared UI Module
-    │   ├── components # Shared Components
-    │   ├── back-button
-    │   ├── content
-    │   ├── global-styles
-    │   ├── header
-    │   └── list-actions
-    ├── hooks         # Shared Services
-    │   ├── use-loading.ts
-    │   ├── use-main-dispatch.ts
-    │   ├── use-main-selector.ts
-    │   ├── use-messages.tsx
-    │   └── use-required-context.ts
-    ├── utils
-    │   └── service-worker.ts
+    │   │   ├── components # Shared Components
+    │   │   ├── back-button
+    │   │   ├── content
+    │   │   ├── global-styles
+    │   │   ├── header
+    │   │   └── list-actions
+    │   ├── hooks         # Shared Services
+    │   │   ├── use-loading.ts
+    │   │   ├── use-main-dispatch.ts
+    │   │   ├── use-main-selector.ts
+    │   │   ├── use-messages.tsx
+    │   │   └── use-required-context.ts
+    │   ├── utils
+    │       └── service-worker.ts
     └── main
 ```
 
