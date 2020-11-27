@@ -7,7 +7,7 @@ import getCategoryByIdSelector from "../selectors/get-category-by-id.selector";
 
 const getCategoryByIdThunk = createAsyncThunk<CategoryEntity | undefined, number, ThunkApiConfig>(
   "@@categories/getCategoryById",
-  async (id, {dispatch, getState}) => {
+  async (id, {dispatch, getState, extra: {api}}) => {
     const existed = getCategoryByIdSelector(id)(getState());
     if (existed) {
       return existed;
@@ -17,7 +17,7 @@ const getCategoryByIdThunk = createAsyncThunk<CategoryEntity | undefined, number
       dispatch(setLoading({key: "categories", status: "pending"}));
       const {
         data: {data},
-      } = await fetchCategoryById(id);
+      } = await api.categories.fetchCategoryById(id);
 
       if (data) {
         dispatch(addCategories([data]));

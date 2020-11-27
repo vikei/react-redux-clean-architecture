@@ -1,8 +1,19 @@
 import {configureStore} from "@reduxjs/toolkit";
-import mainReducer from "./main.reducer";
+import request from "../../api/library/request";
+import api from "../../api/main/api";
+import mainReducer from "../main/main.reducer";
 
 export default function createStore() {
   return configureStore({
     reducer: mainReducer,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: {
+            api,
+            request,
+          },
+        },
+      }),
   });
 }

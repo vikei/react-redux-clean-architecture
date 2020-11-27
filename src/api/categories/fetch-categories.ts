@@ -1,8 +1,10 @@
-import axios from "axios";
 import CategoryEntity from "../../application/categories/entities/category.entity";
+import request from "../library/request";
+import {CATEGORIES_API_URL} from "./constants";
 
 export default function fetchCategories(query?: string) {
-  return axios.get<{data: CategoryEntity[]}>(
-    `http://blog.com/categories${query ? `?query=${query}` : ""}`,
-  );
+  return request<{data: CategoryEntity[]}>({
+    url: `${CATEGORIES_API_URL}${query ? `?query=${query}` : ""}`,
+    method: "GET",
+  });
 }
