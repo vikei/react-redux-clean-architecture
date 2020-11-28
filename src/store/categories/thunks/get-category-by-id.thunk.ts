@@ -1,5 +1,4 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import fetchCategoryById from "../../../api/categories/fetch-category-by-id";
 import CategoryEntity from "../../../application/categories/entities/category.entity";
 import {setLoading} from "../../loading/loading.slice";
 import {addCategories} from "../categories.slice";

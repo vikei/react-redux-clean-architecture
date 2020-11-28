@@ -2,6 +2,8 @@ import axios, {AxiosPromise, AxiosRequestConfig} from "axios";
 
 const FAKE_BLOG_API_URL = "http://blog.com/";
 
+export type Request = typeof request;
+
 export default function request<T extends unknown>({
   baseURL,
   ...config

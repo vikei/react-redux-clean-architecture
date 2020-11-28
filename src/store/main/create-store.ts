@@ -1,7 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
 import request from "../../api/library/request";
 import api from "../../api/main/api";
-import mainReducer from "../main/main.reducer";
+import mainReducer from "./main.reducer";
 
 export default function createStore() {
   return configureStore({

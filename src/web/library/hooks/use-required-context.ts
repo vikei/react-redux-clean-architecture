@@ -1,4 +1,4 @@
-import {useContext, Context} from "react";
+import {Context, useContext} from "react";
 
 export default function useRequiredContext<T>(context: Context<T>) {
   const ctx = useContext(context);

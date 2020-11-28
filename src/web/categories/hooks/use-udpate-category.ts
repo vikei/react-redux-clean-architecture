@@ -1,8 +1,8 @@
 import {useCallback} from "react";
 import CategoryDto from "../../../application/categories/dtos/category-dto";
 import CategoryEntity from "../../../application/categories/entities/category.entity";
-import useMainDispatch from "../../library/hooks/use-main-dispatch";
 import updateCategoryByIdThunk from "../../../store/categories/thunks/update-category-by-id.thunk";
+import useMainDispatch from "../../library/hooks/use-main-dispatch";
 
 interface UseUpdateCategory {
   onSuccess?: (data: CategoryEntity) => void;

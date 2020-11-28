@@ -1,8 +1,8 @@
 import React from "react";
 import {render} from "react-dom";
-import createStore from "./store/library/create-store";
-import * as serviceWorker from "./web/library/utils/service-worker";
 import worker from "./server/main/worker";
+import createStore from "./store/main/create-store";
+import * as serviceWorker from "./web/library/utils/service-worker";
 import AppView from "./web/main/views/app.view";
 
 async function init() {
