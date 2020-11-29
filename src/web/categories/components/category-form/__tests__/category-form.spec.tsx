@@ -1,21 +1,10 @@
 import {build, fake} from "@jackfranklin/test-data-bot";
-import {act, render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import MatchMedia from "jest-matchmedia-mock";
-import MatchMediaMock from "jest-matchmedia-mock";
 import React from "react";
 import CategoryDto from "../../../../../application/categories/dtos/category-dto";
+import {act, render, screen} from "../../../../tests";
+import "../../../../tests/match-media";
 import CategoryForm from "../category-form";
-
-let matchMedia: MatchMedia;
-
-beforeAll(() => {
-  matchMedia = new MatchMediaMock();
-});
-
-afterEach(() => {
-  matchMedia.clear();
-});
 
 const buildCategoriesValues = build<CategoryDto>({
   fields: {

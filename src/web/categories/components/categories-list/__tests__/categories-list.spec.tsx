@@ -1,22 +1,10 @@
 import {build, fake, sequence} from "@jackfranklin/test-data-bot";
-import {getByLabelText, render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import MatchMediaMock from "jest-matchmedia-mock";
-import MatchMedia from "jest-matchmedia-mock";
 import React from "react";
-import {BrowserRouter} from "react-router-dom";
 import CategoryEntity from "../../../../../application/categories/entities/category.entity";
+import {getByLabelText, render, screen} from "../../../../tests";
+import "../../../../tests/match-media";
 import CategoriesList from "../categories-list";
-
-let matchMedia: MatchMedia;
-
-beforeAll(() => {
-  matchMedia = new MatchMediaMock();
-});
-
-afterEach(() => {
-  matchMedia.clear();
-});
 
 function buildCategoriesData() {
   const buildData = build<CategoryEntity>({
@@ -33,19 +21,14 @@ function buildCategoriesData() {
 
 it("render correct length of categories", function () {
   const data = buildCategoriesData();
-  console.log(data);
-  render(<CategoriesList data={data} onDelete={jest.fn()} />, {
-    wrapper: ({children}) => <BrowserRouter>{children}</BrowserRouter>,
-  });
+  render(<CategoriesList data={data} onDelete={jest.fn()} />);
 
   expect(screen.queryAllByLabelText(/category-item/i)).toHaveLength(data.length);
 });
 
 it("render correct category item", function () {
   const data = buildCategoriesData();
-  render(<CategoriesList data={data} onDelete={jest.fn()} />, {
-    wrapper: ({children}) => <BrowserRouter>{children}</BrowserRouter>,
-  });
+  render(<CategoriesList data={data} onDelete={jest.fn()} />);
 
   const [, , item] = data;
   const element = screen.getByLabelText(RegExp(`category-item-${item.id}`));
@@ -62,9 +45,7 @@ it("delete right category", function () {
   const data = buildCategoriesData();
 
   const handleDelete = jest.fn();
-  render(<CategoriesList data={data} onDelete={handleDelete} />, {
-    wrapper: ({children}) => <BrowserRouter>{children}</BrowserRouter>,
-  });
+  render(<CategoriesList data={data} onDelete={handleDelete} />);
 
   const [, , item] = data;
   const element = screen.getByLabelText(RegExp(`category-item-${item.id}`));
