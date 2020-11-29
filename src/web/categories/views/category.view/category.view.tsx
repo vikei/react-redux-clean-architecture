@@ -1,7 +1,7 @@
 import {Typography} from "antd";
 import React from "react";
 import {useParams} from "react-router-dom";
-import Header from "../../../library/components/header";
+import {ContentHeader} from "../../../library/components/content";
 import useCategory from "../../hooks/use-category";
 
 export default function CategoryView() {
@@ -10,9 +10,9 @@ export default function CategoryView() {
 
   return (
     <section>
-      <Header>
+      <ContentHeader>
         <Typography.Title level={1}>Category {data?.name ?? ""}</Typography.Title>
-      </Header>
+      </ContentHeader>
     </section>
   );
 }

@@ -1,33 +1,21 @@
-import {build, fake, sequence} from "@jackfranklin/test-data-bot";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import CategoryEntity from "../../../../../application/categories/entities/category.entity";
 import {getByLabelText, render, screen} from "../../../../tests";
+import buildCategoriesMock from "../../../../tests/build-categories-mock";
 import "../../../../tests/match-media";
 import CategoriesList from "../categories-list";
 
-function buildCategoriesData() {
-  const buildData = build<CategoryEntity>({
-    fields: {
-      id: sequence(),
-      name: fake(f => f.name.title()),
-    },
-  });
+test("render correct length of categories", function () {
+  const data = buildCategoriesMock();
 
-  return Array(5)
-    .fill("")
-    .map(() => buildData());
-}
-
-it("render correct length of categories", function () {
-  const data = buildCategoriesData();
   render(<CategoriesList data={data} onDelete={jest.fn()} />);
 
   expect(screen.queryAllByLabelText(/category-item/i)).toHaveLength(data.length);
 });
 
-it("render correct category item", function () {
-  const data = buildCategoriesData();
+test("render correct category item", function () {
+  const data = buildCategoriesMock();
+
   render(<CategoriesList data={data} onDelete={jest.fn()} />);
 
   const [, , item] = data;
@@ -41,10 +29,10 @@ it("render correct category item", function () {
   expect(getByLabelText(element, /delete/)).toBeInTheDocument();
 });
 
-it("delete right category", function () {
-  const data = buildCategoriesData();
-
+test("delete right category", function () {
+  const data = buildCategoriesMock();
   const handleDelete = jest.fn();
+
   render(<CategoriesList data={data} onDelete={handleDelete} />);
 
   const [, , item] = data;

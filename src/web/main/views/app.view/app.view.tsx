@@ -6,7 +6,7 @@ import {MessagesProvider} from "../../../library/hooks/use-messages";
 import AppRouter from "../../routes/app.router";
 
 interface AppViewProps {
-  store: Store<MainState>; // TODO add action type
+  store: Store<MainState>;
 }
 
 function AppView({store}: AppViewProps) {

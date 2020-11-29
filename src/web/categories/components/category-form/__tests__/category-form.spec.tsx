@@ -1,22 +1,15 @@
-import {build, fake} from "@jackfranklin/test-data-bot";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import CategoryDto from "../../../../../application/categories/dtos/category-dto";
 import {act, render, screen} from "../../../../tests";
 import "../../../../tests/match-media";
+import {buildCategoryMock} from "../../../../tests/build-categories-mock";
 import CategoryForm from "../category-form";
 
-const buildCategoriesValues = build<CategoryDto>({
-  fields: {
-    name: fake(f => f.name.title()),
-  },
-});
+test("submit form with data", async function () {
+  const handleSubmitMock = jest.fn();
+  render(<CategoryForm onSubmit={handleSubmitMock} />);
 
-it("submit form with data", async function () {
-  const handleSubmit = jest.fn();
-  render(<CategoryForm onSubmit={handleSubmit} />);
-
-  const {name} = buildCategoriesValues();
+  const {name} = buildCategoryMock()();
 
   userEvent.type(screen.getByLabelText(/name/i), name);
   userEvent.click(screen.getByRole("button", {name: /submit/i}));
@@ -24,17 +17,17 @@ it("submit form with data", async function () {
   /* Needed await because ant form async */
   await act(() => Promise.resolve());
 
-  expect(handleSubmit).toHaveBeenCalledTimes(1);
-  expect(handleSubmit).toHaveBeenCalledWith({
+  expect(handleSubmitMock).toHaveBeenCalledTimes(1);
+  expect(handleSubmitMock).toHaveBeenCalledWith({
     name,
   });
 });
 
-it("set default values", async function () {
-  const handleSubmit = jest.fn();
-  const {name} = buildCategoriesValues();
+test("set default values", async function () {
+  const handleSubmitMock = jest.fn();
+  const {name} = buildCategoryMock()();
 
-  render(<CategoryForm initialValues={{name}} onSubmit={handleSubmit} />);
+  render(<CategoryForm initialValues={{name}} onSubmit={handleSubmitMock} />);
 
   expect(screen.getByLabelText(/name/i)).toHaveDisplayValue(name);
 });

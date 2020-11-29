@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const Content = styled.main({
+const ContentBody = styled.section({
   width: 1000,
   margin: "0 auto",
 });
 
-export default Content;
+export default ContentBody;

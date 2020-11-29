@@ -11,4 +11,3 @@ Purpose of repo
 - Clean Architecture
 - Clean Code
 - TDD
-- Exercise
