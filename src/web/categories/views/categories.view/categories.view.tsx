@@ -16,7 +16,6 @@ export default function CategoriesView() {
   return (
     <section>
       <Header>
-        {/* TODO: create component */}
         <div style={{marginBottom: 30}}>
           <Input.Search
             placeholder="input search text"

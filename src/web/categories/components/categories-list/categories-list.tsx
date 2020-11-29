@@ -2,7 +2,7 @@ import {List} from "antd";
 import React from "react";
 import {Link} from "react-router-dom";
 import CategoryEntity from "../../../../application/categories/entities/category.entity";
-import {ActionItem, ListActions} from "../../../library/components/list-actions/list-actions";
+import ListActions, {ActionItem} from "../../../library/components/list-actions/list-actions";
 
 interface CategoriesListProps {
   data: CategoryEntity[];
@@ -18,17 +18,26 @@ export default function CategoriesList({data, loading, onDelete}: CategoriesList
       loading={loading}
       dataSource={data}
       renderItem={item => (
-        <List.Item style={{display: "flex", justifyContent: "space-between"}}>
+        <List.Item
+          style={{display: "flex", justifyContent: "space-between"}}
+          aria-label={`category-item-${item.id}`}
+        >
           <header>{item.name}</header>
           <ListActions>
             <ActionItem>
-              <Link to={`/categories/${item.id}`}>more</Link>
+              <Link aria-label="more-link" to={`/categories/${item.id}`}>
+                more
+              </Link>
             </ActionItem>
             <ActionItem>
-              <Link to={`/categories/${item.id}/update`}>update</Link>
+              <Link aria-label="update-link" to={`/categories/${item.id}/update`}>
+                update
+              </Link>
             </ActionItem>
             <ActionItem>
-              <span onClick={() => onDelete(item.id)}>delete</span>
+              <span role="button" aria-label="delete" onClick={() => onDelete(item.id)}>
+                delete
+              </span>
             </ActionItem>
           </ListActions>
         </List.Item>

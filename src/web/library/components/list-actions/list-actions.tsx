@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ActionItem = styled.li({});
 
-export const ListActions = styled.ul({
+const ListActions = styled.ul({
   display: "flex",
 
   listStyle: "none",
@@ -11,3 +11,5 @@ export const ListActions = styled.ul({
     marginRight: 5,
   },
 });
+
+export default ListActions;
