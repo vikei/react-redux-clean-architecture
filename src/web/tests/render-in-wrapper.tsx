@@ -6,7 +6,7 @@ import {BrowserRouter} from "react-router-dom";
 import createStore from "../../store/main/create-store";
 import {MessagesProvider} from "../library/hooks/use-messages";
 
-export default function render(ui: ReactElement) {
+export default function renderInWrapper(ui: ReactElement) {
   const store = createStore();
   const Wrapper: ComponentType = ({children}) => (
     <Provider store={store}>

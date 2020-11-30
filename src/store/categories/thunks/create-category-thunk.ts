@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import CategoryDto from "../../../application/categories/dtos/category-dto";
+import CategoryDto from "../../../application/api/categories/dtos/category-dto";
 import CategoryEntity from "../../../application/categories/entities/category-entity";
 import {addCategories} from "../categories-slice";
 
@@ -9,7 +9,9 @@ const createCategoryThunk = createAsyncThunk<CategoryEntity, CategoryDto, ThunkA
     const {
       data: {data},
     } = await api.categories.createCategory(dto);
+
     dispatch(addCategories([data]));
+
     return data;
   },
 );

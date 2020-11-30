@@ -1,6 +1,6 @@
 import {useCallback} from "react";
 import {useHistory} from "react-router-dom";
-import CategoryDto from "../../../../../application/categories/dtos/category-dto";
+import CategoryDto from "../../../../../application/api/categories/dtos/category-dto";
 import useMessages from "../../../../library/hooks/use-messages";
 import useUpdateCategory from "../../../hooks/use-udpate-category";
 

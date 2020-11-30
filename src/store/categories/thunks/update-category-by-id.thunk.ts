@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import CategoryDto from "../../../application/categories/dtos/category-dto";
+import CategoryDto from "../../../application/api/categories/dtos/category-dto";
 import CategoryEntity from "../../../application/categories/entities/category-entity";
 import {updateCategory} from "../categories-slice";
 
@@ -11,7 +11,9 @@ const updateCategoryByIdThunk = createAsyncThunk<
   const {
     data: {data},
   } = await api.categories.updateCategoryById(id, values);
+
   dispatch(updateCategory({id: data.id, changes: data}));
+
   return data;
 });
 

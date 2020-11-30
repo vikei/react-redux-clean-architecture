@@ -1,46 +1,26 @@
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import {getByLabelText, render, screen} from "../../../../tests";
+import {getByLabelText, renderInWrapper, screen} from "../../../../tests";
 import buildCategoriesMock from "../../../../tests/build-categories-mock";
 import "../../../../tests/match-media";
-import Categories from "../categories";
-
-test("avoid call fetch when categories exist", function () {
-  const fetchMock = jest.fn();
-  const data = buildCategoriesMock();
-  render(<Categories loading={false} data={data} onDelete={jest.fn()} fetch={fetchMock} />);
-
-  expect(fetchMock).toHaveBeenCalledTimes(0);
-});
-
-test("call fetch when categories don't exist", function () {
-  const fetchMock = jest.fn();
-  render(<Categories loading={false} data={[]} onDelete={jest.fn()} fetch={fetchMock} />);
-
-  expect(fetchMock).toHaveBeenCalledTimes(1);
-});
+import CategoriesList from "../categories-list";
 
 test("render categories list", function () {
   const data = buildCategoriesMock();
-  render(<Categories loading={false} data={data} onDelete={jest.fn()} fetch={jest.fn()} />);
+  renderInWrapper(<CategoriesList data={data} onDelete={jest.fn()} />);
+
+  expect(screen.queryByLabelText(/categories-list/i)).toBeInTheDocument();
+  expect(screen.queryAllByLabelText(/category-item/i)).toHaveLength(data.length);
 
   expect(screen.queryAllByLabelText(/more-link/i)).toHaveLength(data.length);
   expect(screen.queryAllByLabelText(/update-link/i)).toHaveLength(data.length);
   expect(screen.queryAllByLabelText(/delete/i)).toHaveLength(data.length);
 });
 
-test("render correct length of categories", function () {
-  const data = buildCategoriesMock();
-
-  render(<Categories data={data} fetch={jest.fn()} onDelete={jest.fn()} />);
-
-  expect(screen.queryAllByLabelText(/category-item/i)).toHaveLength(data.length);
-});
-
 test("render correct category item", function () {
   const data = buildCategoriesMock();
 
-  render(<Categories data={data} fetch={jest.fn()} onDelete={jest.fn()} />);
+  renderInWrapper(<CategoriesList data={data} onDelete={jest.fn()} />);
 
   const [, , item] = data;
   const element = screen.getByLabelText(RegExp(`category-item-${item.id}`));
@@ -57,7 +37,7 @@ test("delete right category", function () {
   const data = buildCategoriesMock();
   const handleDelete = jest.fn();
 
-  render(<Categories data={data} fetch={jest.fn()} onDelete={handleDelete} />);
+  renderInWrapper(<CategoriesList data={data} onDelete={handleDelete} />);
 
   const [, , item] = data;
   const element = screen.getByLabelText(RegExp(`category-item-${item.id}`));

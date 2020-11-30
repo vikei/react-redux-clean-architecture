@@ -1,6 +1,6 @@
 import {Button, Form, Input} from "antd";
 import React, {useCallback} from "react";
-import CategoryDto from "../../../../application/categories/dtos/category-dto";
+import CategoryDto from "../../../../application/api/categories/dtos/category-dto";
 
 interface CategoryFormProps {
   onSubmit: (values: CategoryDto) => void;

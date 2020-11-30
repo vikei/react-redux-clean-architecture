@@ -160,4 +160,6 @@ This layer is where all the details go. The Web is a detail. The Storage is a de
 - [ ] [Clean architecture for the rest of us :trophy:](https://pusher.com/tutorials/clean-architecture-introduction)
 - [ ] [Founder Funny Video :trollface:](https://www.youtube.com/watch?v=2dKZ-dWaCiU)
 - [ ] [Principles :+1:](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [ ] [MY TAKE ON DOING 'CLEAN ARCHITECTURE' IN REACT (PART 1)](https://janithl.github.io/2019/10/react-clean-architecture-part-1/)
+- [ ] [MY TAKE ON DOING 'CLEAN ARCHITECTURE' IN REACT (PART 2)](https://janithl.github.io/2019/10/react-clean-architecture-part-2/)
 
