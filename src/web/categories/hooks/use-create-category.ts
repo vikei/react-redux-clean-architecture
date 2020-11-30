@@ -1,7 +1,7 @@
 import {useCallback} from "react";
 import CategoryDto from "../../../application/categories/dtos/category-dto";
-import CategoryEntity from "../../../application/categories/entities/category.entity";
-import createCategoryThunk from "../../../store/categories/thunks/create-category.thunk";
+import CategoryEntity from "../../../application/categories/entities/category-entity";
+import createCategoryThunk from "../../../store/categories/thunks/create-category-thunk";
 import useMainDispatch from "../../library/hooks/use-main-dispatch";
 
 interface UseCreateCategory {

@@ -1,7 +1,6 @@
 import {Button, Input, Typography} from "antd";
 import React, {useCallback} from "react";
 import {Link} from "react-router-dom";
-import {ContentHeader} from "../../../library/components/content";
 
 interface HeaderProps {
   onSearch: (query?: string) => Promise<void>;
@@ -16,7 +15,7 @@ export default function Header({onSearch}: HeaderProps) {
   );
 
   return (
-    <ContentHeader>
+    <>
       <div style={{marginBottom: 30}}>
         <Input.Search
           placeholder="input search text"
@@ -34,6 +33,6 @@ export default function Header({onSearch}: HeaderProps) {
           </Link>
         </Button>
       </div>
-    </ContentHeader>
+    </>
   );
 }

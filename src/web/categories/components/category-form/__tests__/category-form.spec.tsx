@@ -1,8 +1,8 @@
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import {act, render, screen} from "../../../../tests";
-import "../../../../tests/match-media";
 import {buildCategoryMock} from "../../../../tests/build-categories-mock";
+import "../../../../tests/match-media";
 import CategoryForm from "../category-form";
 
 test("submit form with data", async function () {

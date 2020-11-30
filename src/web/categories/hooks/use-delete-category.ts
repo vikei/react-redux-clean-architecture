@@ -1,5 +1,5 @@
 import {useCallback} from "react";
-import deleteCategoryByIdThunk from "../../../store/categories/thunks/delete-category-by-id.thunk";
+import deleteCategoryByIdThunk from "../../../store/categories/thunks/delete-category-by-id-thunk";
 import useMainDispatch from "../../library/hooks/use-main-dispatch";
 
 interface UseDeleteCategory {

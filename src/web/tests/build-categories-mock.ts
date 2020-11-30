@@ -1,5 +1,5 @@
 import {build, fake, sequence} from "@jackfranklin/test-data-bot";
-import CategoryEntity from "../../application/categories/entities/category.entity";
+import CategoryEntity from "../../application/categories/entities/category-entity";
 
 export function buildCategoryMock() {
   return build<CategoryEntity>({

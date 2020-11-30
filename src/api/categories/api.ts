@@ -4,7 +4,7 @@ import fetchCategories from "./requests/fetch-categories";
 import fetchCategoryById from "./requests/fetch-category-by-id";
 import updateCategoryById from "./requests/update-category-by-id";
 
-const categoriesApi = {
+const api = {
   createCategory,
   updateCategoryById,
   deleteCategoryById,
@@ -12,4 +12,4 @@ const categoriesApi = {
   fetchCategories,
 };
 
-export default categoriesApi;
+export default api;

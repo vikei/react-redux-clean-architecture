@@ -1,7 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import CategoryDto from "../../../application/categories/dtos/category-dto";
-import CategoryEntity from "../../../application/categories/entities/category.entity";
-import {addCategories} from "../categories.slice";
+import CategoryEntity from "../../../application/categories/entities/category-entity";
+import {addCategories} from "../categories-slice";
 
 const createCategoryThunk = createAsyncThunk<CategoryEntity, CategoryDto, ThunkApiConfig>(
   "@@categories/createCategory",

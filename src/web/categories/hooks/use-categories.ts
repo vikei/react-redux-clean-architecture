@@ -1,6 +1,6 @@
 import {useCallback, useEffect} from "react";
-import getCategoriesSelector from "../../../store/categories/selectors/get-categories.selector";
-import getCategoriesThunk from "../../../store/categories/thunks/get-categories.thunk";
+import selectCategories from "../../../store/categories/selectors/select-categories";
+import fetchCategoriesThunk from "../../../store/categories/thunks/fetch-categories-thunk";
 import useLoading from "../../library/hooks/use-loading";
 import useMainDispatch from "../../library/hooks/use-main-dispatch";
 import useMainSelector from "../../library/hooks/use-main-selector";
@@ -15,7 +15,7 @@ export default function useCategories({query, skip}: UseCategories = {}) {
 
   const fetch = useCallback(
     async ({query}: {query?: string} = {}) => {
-      await dispatch(getCategoriesThunk({query}));
+      await dispatch(fetchCategoriesThunk({query}));
     },
     [dispatch],
   );
@@ -28,7 +28,7 @@ export default function useCategories({query, skip}: UseCategories = {}) {
     fetch({query});
   }, [dispatch, fetch, query, skip]);
 
-  const data = useMainSelector(getCategoriesSelector);
+  const data = useMainSelector(selectCategories);
 
   const [loading] = useLoading("categories");
 

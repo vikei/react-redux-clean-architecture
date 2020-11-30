@@ -1,5 +1,5 @@
 import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
-import CategoryEntity from "../../application/categories/entities/category.entity";
+import CategoryEntity from "../../application/categories/entities/category-entity";
 
 export const categoriesAdapter = createEntityAdapter<CategoryEntity>();
 

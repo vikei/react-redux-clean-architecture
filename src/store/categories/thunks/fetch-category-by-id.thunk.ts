@@ -1,13 +1,13 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import CategoryEntity from "../../../application/categories/entities/category.entity";
-import {setLoading} from "../../loading/loading.slice";
-import {addCategories} from "../categories.slice";
-import getCategoryByIdSelector from "../selectors/get-category-by-id.selector";
+import CategoryEntity from "../../../application/categories/entities/category-entity";
+import {setLoading} from "../../loading/loading-slice";
+import {addCategories} from "../categories-slice";
+import selectCategoryById from "../selectors/select-category-by-id";
 
-const getCategoryByIdThunk = createAsyncThunk<CategoryEntity | undefined, number, ThunkApiConfig>(
+const fetchCategoryByIdThunk = createAsyncThunk<CategoryEntity | undefined, number, ThunkApiConfig>(
   "@@categories/getCategoryById",
   async (id, {dispatch, getState, extra: {api}}) => {
-    const existed = getCategoryByIdSelector(id)(getState());
+    const existed = selectCategoryById(id)(getState());
     if (existed) {
       return existed;
     }
@@ -31,4 +31,4 @@ const getCategoryByIdThunk = createAsyncThunk<CategoryEntity | undefined, number
   },
 );
 
-export default getCategoryByIdThunk;
+export default fetchCategoryByIdThunk;

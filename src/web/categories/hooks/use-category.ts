@@ -1,6 +1,6 @@
 import {useEffect} from "react";
-import getCategoryByIdSelector from "../../../store/categories/selectors/get-category-by-id.selector";
-import getCategoryByIdThunk from "../../../store/categories/thunks/get-category-by-id.thunk";
+import selectCategoryById from "../../../store/categories/selectors/select-category-by-id";
+import fetchCategoryByIdThunk from "../../../store/categories/thunks/fetch-category-by-id.thunk";
 import useMainDispatch from "../../library/hooks/use-main-dispatch";
 import useMainSelector from "../../library/hooks/use-main-selector";
 
@@ -12,10 +12,10 @@ export default function useCategory({id}: UseCategory) {
   const dispatch = useMainDispatch();
 
   useEffect(() => {
-    dispatch(getCategoryByIdThunk(id));
+    dispatch(fetchCategoryByIdThunk(id));
   }, [dispatch, id]);
 
-  const data = useMainSelector(getCategoryByIdSelector(id));
+  const data = useMainSelector(selectCategoryById(id));
 
   return {data};
 }

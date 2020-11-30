@@ -4,14 +4,14 @@ import {
   LoadingKeys,
   LoadingStatus,
   setLoading as setLoadingAction,
-} from "../../../store/loading/loading.slice";
-import getLoadingSelector from "../../../store/loading/selectors/get-loading.selector";
+} from "../../../store/loading/loading-slice";
+import selectLoading from "../../../store/loading/selectors/select-loading";
 import useMainDispatch from "./use-main-dispatch";
 import useMainSelector from "./use-main-selector";
 
 export default function useLoading(name: LoadingKeys, initialStatus?: LoadingStatus) {
   const dispatch = useMainDispatch();
-  const status = useMainSelector(getLoadingSelector(name));
+  const status = useMainSelector(selectLoading(name));
 
   useMount(() => {
     if (initialStatus) {

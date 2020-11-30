@@ -13,23 +13,23 @@ src
 ├── setupTests.ts
 ├── store              # Infrastructure - Storage logic specific to storage of application
 │   ├── categories
-│   ├── categories.slice.ts
+│   ├── categories-slice.ts
 │   ├── selectors      # Selectors - How we can find data in storage
-│   │   ├── get-categories.selector.ts
-│   │   ├── get-categories.selector.ts
-│   │   ├── get-category-by-id.selector.ts
+│   │   ├── select-categories.ts
+│   │   ├── select-categories.ts
+│   │   ├── select-category-by-id.ts
 │   ├── thunks         # Adapters - Logic that links domain and infrastructure
-│   │   ├── create-category.thunk.ts
-│   │   ├── delete-category-by-id.thunk.ts
-│   │   ├── get-categories.thunk.ts
-│   │   ├── get-category-by-id.thunk.ts
+│   │   ├── create-category-thunk.ts
+│   │   ├── delete-category-by-id-thunk.ts
+│   │   ├── fetch-categories-thunk.ts
+│   │   ├── fetch-category-by-id.thunk.ts
 │   │   └── update-category-by-id.thunk.ts
 │   ├── library
 │   └── loading
 └── web                # UI Infrastructure
     ├── articles
-    ├── categories     # Categories UI Module
-    │   ├── components # Shared Categories Components
+    ├── categories     # Body UI Module
+    │   ├── components # Shared Body Components
     │   ├── categories-list
     │   └── category-form
     ├── hooks          # Services handle ui logic
@@ -40,7 +40,7 @@ src
     │   ├── use-search-categories.ts
     │   └── use-udpate-category.ts
     ├── routes         # Routes
-    │   └── categories.router.tsx
+    │   └── categories-router.tsx
     ├── views          # Views that used in Routes
     │   ├── categories.view
     │   ├── category.view

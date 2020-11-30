@@ -1,16 +1,26 @@
 import {List} from "antd";
-import React from "react";
+import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
-import CategoryEntity from "../../../../application/categories/entities/category.entity";
+import CategoryEntity from "../../../../application/categories/entities/category-entity";
 import ListActions, {ActionItem} from "../../../library/components/list-actions/list-actions";
 
-interface CategoriesListProps {
+interface CategoriesProps {
+  loading?: boolean;
   data: CategoryEntity[];
   onDelete: (id: number) => void;
-  loading?: boolean;
+  fetch: () => Promise<void>;
 }
 
-export default function CategoriesList({data, loading, onDelete}: CategoriesListProps) {
+export default function Categories({data, loading, fetch, onDelete}: CategoriesProps) {
+  // TODO: move to thunk
+  useEffect(() => {
+    if (data.length) {
+      return;
+    }
+
+    fetch();
+  }, [data.length, fetch]);
+
   return (
     <List
       bordered

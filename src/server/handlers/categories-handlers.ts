@@ -1,6 +1,6 @@
 import storage from "localforage";
 import {rest} from "msw";
-import CategoryEntity from "../../application/categories/entities/category.entity";
+import CategoryEntity from "../../application/categories/entities/category-entity";
 
 const categoriesHandlers = [
   rest.post<CategoryEntity>("http://blog.com/categories", async (req, res, ctx) => {

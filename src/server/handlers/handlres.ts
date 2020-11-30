@@ -1,4 +1,4 @@
-import categoriesHandlers from "./categories.handlers";
+import categoriesHandlers from "./categories-handlers";
 
 const handlers = [...categoriesHandlers];
 
