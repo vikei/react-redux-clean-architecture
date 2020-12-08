@@ -1,4 +1,4 @@
-import categoriesApi from "./categories/api";
+import categoriesApi from "../categories/api";
 
 export type API = typeof api;
 

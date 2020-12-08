@@ -1,5 +1,5 @@
 import {AsyncThunkConfig} from "@reduxjs/toolkit";
-import {API} from "../../application/api/api";
+import {API} from "../../application/api/main/api";
 import {Request} from "../../application/library/request";
 import createStore from "./create-store";
 import mainReducer from "./main.reducer";

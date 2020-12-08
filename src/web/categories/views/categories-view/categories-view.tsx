@@ -7,7 +7,7 @@ import Header from "./header";
 import useDelete from "./hooks/use-delete";
 
 export default function CategoriesView() {
-  const {data, loading, fetch} = useCategories({skip: true});
+  const {data, loading, fetch} = useCategories();
 
   const handleSearch = useCallback(
     async (name?: string) => {

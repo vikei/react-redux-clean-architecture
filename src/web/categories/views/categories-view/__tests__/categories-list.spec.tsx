@@ -17,7 +17,7 @@ test("render categories list", function () {
   expect(screen.queryAllByLabelText(/delete/i)).toHaveLength(data.length);
 });
 
-test("render correct category item", function () {
+test("render correct category item actions", function () {
   const data = buildCategoriesMock();
 
   renderInWrapper(<CategoriesList data={data} onDelete={jest.fn()} />);
@@ -33,7 +33,7 @@ test("render correct category item", function () {
   expect(getByLabelText(element, /delete/)).toBeInTheDocument();
 });
 
-test("delete right category", function () {
+test("click delete right category", function () {
   const data = buildCategoriesMock();
   const handleDelete = jest.fn();
 

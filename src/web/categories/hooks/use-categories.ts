@@ -12,7 +12,6 @@ interface UseCategories {
 
 export default function useCategories({query, skip}: UseCategories = {}) {
   const dispatch = useMainDispatch();
-
   const fetch = useCallback(
     async ({query}: {query?: string} = {}) => {
       await dispatch(fetchCategoriesThunk({query}));
@@ -21,15 +20,12 @@ export default function useCategories({query, skip}: UseCategories = {}) {
   );
 
   useEffect(() => {
-    if (skip) {
-      return;
+    if (!skip) {
+      fetch({query});
     }
-
-    fetch({query});
-  }, [dispatch, fetch, query, skip]);
+  }, [fetch, query, skip]);
 
   const data = useMainSelector(selectCategories);
-
   const [loading] = useLoading("categories");
 
   return {data, loading, fetch};

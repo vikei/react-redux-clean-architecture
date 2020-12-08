@@ -14,7 +14,6 @@ const fetchCategoriesThunk = createAsyncThunk<
     const {
       data: {data},
     } = await api.categories.fetchCategories(params?.query);
-
     dispatch(setCategories(data));
     dispatch(setLoading({key: "categories", status: "resolved"}));
     return data;

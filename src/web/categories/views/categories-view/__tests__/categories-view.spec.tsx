@@ -1,20 +1,40 @@
+import {rest} from "msw";
+import {setupServer} from "msw/node";
+import MutationObserver from "mutation-observer";
 import React from "react";
-import {renderInWrapper, screen} from "../../../../tests";
+import {renderInWrapper, screen, waitForElementToBeRemoved} from "../../../../tests";
+import buildCategoriesMock from "../../../../tests/build-categories-mock";
 import "../../../../tests/match-media";
 import CategoriesView from "../categories-view";
 
-/*test("avoid call fetch when categories exist", function () {
-  renderInWrapper(<CategoriesView />);
+const server = setupServer();
+
+beforeAll(() => {
+  global.MutationObserver = MutationObserver;
+
+  server.listen();
 });
 
-test("call fetch when categories don't exist", function () {
-  renderInWrapper(<CategoriesView />);
-});*/
+afterAll(() => {
+  server.close();
+});
 
-test("render page elements", function () {
-  renderInWrapper(<CategoriesView />);
+afterEach(() => {
+  server.resetHandlers();
+});
 
-  expect(screen.getByRole(/searchbox/i)).toBeInTheDocument();
-  expect(screen.getByRole(/button/i, {name: /search/i})).toBeInTheDocument();
+test("display categories", async () => {
+  const data = buildCategoriesMock();
+  server.use(
+    rest.get("http://blog.com/categories", (req, res, ctx) => {
+      return res(ctx.json({data}));
+    }),
+  );
+
+  const {container} = renderInWrapper(<CategoriesView />);
+
+  await waitForElementToBeRemoved(() => container.querySelector(".ant-list-loading"));
+
   expect(screen.queryByLabelText(/categories-list/i)).toBeInTheDocument();
+  expect(screen.queryAllByLabelText(/category-item/i)).toHaveLength(data.length);
 });
